@@ -2,9 +2,9 @@
 
 @implementation ETDrawingStrokeShape
 
-- (id) init
+- (id) initWithObjectGraphContext: (COObjectGraphContext *)aContext
 {
-	self = [super initWithBezierPath: [NSBezierPath bezierPath]];
+	self = [super initWithBezierPath: [NSBezierPath bezierPath] objectGraphContext: aContext];
 	if (nil == self)
 	{
 		return nil;
@@ -13,7 +13,7 @@
 	_pressures = [[NSMutableArray alloc] initWithCapacity:1000];
 	
 	// Change this to ETPenStyle to get a vector pen tool instead..
-	_brushStyle = [[ETBrushStyle alloc] init];
+	_brushStyle = [[ETBrushStyle alloc] initWithObjectGraphContext: aContext];
 	_origin = NSMakePoint(0.0, 0.0);
 	return self;
 }

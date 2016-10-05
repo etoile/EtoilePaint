@@ -16,7 +16,7 @@
 #import <EtoileUI/EtoileUI.h>
 #import <EtoilePaint/EtoilePaint.h>
 
-@interface SketchController : NSObject
+@interface SketchController : ETController
 {
 	ETLayoutItemGroup *mainItem;
 }
