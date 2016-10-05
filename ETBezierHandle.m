@@ -5,7 +5,7 @@
     Date: August 2009
     License:  Modified BSD (see COPYING)
  */
-
+#import <CoreObject/COObject.h>
 #import <EtoileFoundation/Macros.h>
 #import <EtoileUI/ETGeometry.h>
 #import <EtoileUI/ETShape.h>
@@ -137,12 +137,12 @@
 
 - (id) manipulatedObject
 {
-	return GET_PROPERTY(kETManipulatedObjectProperty);
+	return [COObject valueForVariableStorageKey: kETManipulatedObjectProperty];
 }
 
 - (void) setManipulatedObject: (id)anObject
 {
-	SET_PROPERTY(anObject, kETManipulatedObjectProperty);
+	[COObject setValue: anObject forVariableStorageKey: kETManipulatedObjectProperty];
 	/* Better to avoid -setFrame: which would update the represented object frame. */
 	// FIXME: Ugly duplication with -setFrame:... 
 	//[self setFrame: [anObject frame]];
@@ -152,42 +152,42 @@
 
 - (NSPoint) anchorPoint
 {
-	return [(ETLayoutItem *)GET_PROPERTY(kETManipulatedObjectProperty) anchorPoint];
+	return [(ETLayoutItem *)[COObject valueForVariableStorageKey: kETManipulatedObjectProperty] anchorPoint];
 }
 
 - (void) setAnchorPoint: (NSPoint)anchor
 {
-	return [(ETLayoutItem *)GET_PROPERTY(kETManipulatedObjectProperty) setAnchorPoint: anchor];
+	return [(ETLayoutItem *)[COObject valueForVariableStorageKey: kETManipulatedObjectProperty] setAnchorPoint: anchor];
 }
 
 - (NSPoint) position
 {
-	return [(ETLayoutItem *)GET_PROPERTY(kETManipulatedObjectProperty) position];
+	return [(ETLayoutItem *)[COObject valueForVariableStorageKey: kETManipulatedObjectProperty] position];
 }
 
 - (void) setPosition: (NSPoint)aPosition
 {
-	[(ETLayoutItem *)GET_PROPERTY(kETManipulatedObjectProperty) setPosition: aPosition];
+	[(ETLayoutItem *)[COObject valueForVariableStorageKey: kETManipulatedObjectProperty] setPosition: aPosition];
 	[self updateHandleLocations];
 }
 
 /** Returns the content bounds associated with the receiver. */
 - (NSRect) contentBounds
 {
-	NSRect manipulatedFrame = [GET_PROPERTY(kETManipulatedObjectProperty) frame];
+	NSRect manipulatedFrame = [[COObject valueForVariableStorageKey: kETManipulatedObjectProperty] frame];
 	return ETMakeRect(NSZeroPoint, manipulatedFrame.size);
 }
 
 - (void) setContentBounds: (NSRect)rect
 {
-	NSRect manipulatedFrame = ETMakeRect([GET_PROPERTY(kETManipulatedObjectProperty) origin], rect.size);
-	[GET_PROPERTY(kETManipulatedObjectProperty) setFrame: manipulatedFrame];
+	NSRect manipulatedFrame = ETMakeRect([[COObject valueForVariableStorageKey: kETManipulatedObjectProperty] origin], rect.size);
+	[[COObject valueForVariableStorageKey: kETManipulatedObjectProperty] setFrame: manipulatedFrame];
 	[self updateHandleLocations];
 }
 
 - (NSRect) frame
 {
-	return [GET_PROPERTY(kETManipulatedObjectProperty) frame];
+	return [[COObject valueForVariableStorageKey: kETManipulatedObjectProperty] frame];
 }
 
 // NOTE: We need to figure out what we really needs. For example,
@@ -196,14 +196,14 @@
 // probably want to cache the bounding box value in an ivar too.
 - (void) setFrame: (NSRect)frame
 {
-	[GET_PROPERTY(kETManipulatedObjectProperty) setFrame: frame];
+	[[COObject valueForVariableStorageKey: kETManipulatedObjectProperty] setFrame: frame];
 	[self updateHandleLocations];
 }
 
 - (void) setBoundingBox: (NSRect)extent
 {
 	[super setBoundingBox: extent];
-	[GET_PROPERTY(kETManipulatedObjectProperty) setBoundingBox: extent];
+	[[COObject valueForVariableStorageKey: kETManipulatedObjectProperty] setBoundingBox: extent];
 }
 
 /** Marks both the receiver and its manipulated object as invalidated area 

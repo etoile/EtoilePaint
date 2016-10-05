@@ -10,7 +10,7 @@
 #import <EtoileUI/ETLayoutItem.h>
 #import <EtoileUI/EtoileUIProperties.h>
 #import <EtoileUI/ETSelectTool.h>
-#import <EtoileUI/NSView+Etoile.h>
+#import <EtoileUI/NSView+EtoileUI.h>
 #import <EtoileUI/ETCompatibility.h>
 
 #import "ETBezierHandle.h"
