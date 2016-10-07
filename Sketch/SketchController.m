@@ -11,13 +11,6 @@
 
 @implementation SketchController
 
-- (instancetype)init
-{
-
-	self = [super initWithObjectGraphContext: [ETUIObject defaultTransientObjectGraphContext]];
-	return	(self);
-}
-
 - (void) applicationDidFinishLaunching: (NSNotification *)notif
 {
 	ETLayoutItemFactory *itemFactory = [ETLayoutItemFactory factory];
@@ -34,7 +27,7 @@
 	// base located in the bottom left.
 	//[mainItem setFlipped: NO];
 	[mainItem setSize: NSMakeSize(500, 400)];
-	[mainItem setLayout: [ETBezierFreeLayout layoutWithObjectGraphContext: [self objectGraphContext]]];
+	[mainItem setLayout: [ETBezierFreeLayout layoutWithObjectGraphContext: [itemFactory objectGraphContext]]];
 
 	/* Make mainItem visible by inserting it inside the window layer */
 
@@ -58,11 +51,11 @@
 	ETSelectTool *tool = [[mainItem layout] attachedTool];
 	[[[tool selectionAreaItem] style] setStrokeColor: [NSColor orangeColor]];
 
-	[[mainItem layout] setAttachedTool: [ETBrushTool toolWithObjectGraphContext: [self objectGraphContext]]];
+	[[mainItem layout] setAttachedTool: [ETBrushTool toolWithObjectGraphContext: [itemFactory objectGraphContext]]];
 
 	/* Give grid-like positions to items initially */
 
-	ETFlowLayout *flow = [ETFlowLayout layoutWithObjectGraphContext: [self objectGraphContext]];
+	ETFlowLayout *flow = [ETFlowLayout layoutWithObjectGraphContext: [itemFactory objectGraphContext]];
 	[flow setItemSizeConstraintStyle: ETSizeConstraintStyleNone];
 	[(ETFreeLayout *)[mainItem layout] resetItemPersistentFramesWithLayout: flow];
 
