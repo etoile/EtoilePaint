@@ -28,8 +28,8 @@
 
 - (id) initWithActionHandler: (ETActionHandler *)anHandler
            manipulatedObject: (id)aTarget
-		  objectGraphContext: (COObjectGraphContext *)aContext
-                    partcode: (ETBezierPathPartcode)partcode;
+                    partcode: (ETBezierPathPartcode)partcode
+		  objectGraphContext: (COObjectGraphContext *)aContext;
 
 - (NSBezierPath *) manipulatedPath;
 - (ETBezierPathPartcode) partcode;
