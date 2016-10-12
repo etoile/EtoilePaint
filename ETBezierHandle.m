@@ -17,11 +17,11 @@
 - (id) initWithActionHandler: (ETActionHandler *)anHandler
            manipulatedObject: (id)aTarget
                     partcode: (ETBezierPathPartcode)partcode
-		  objectGraphContext: (COObjectGraphContext *)aContext
+          objectGraphContext: (COObjectGraphContext *)aContext
 {
 	self = [super initWithActionHandler: anHandler
-	                  manipulatedObject: aTarget
-					 objectGraphContext: aContext];
+                      manipulatedObject: aTarget
+                     objectGraphContext: aContext];
 	if (nil == self)
 	{
 		return nil;
@@ -81,25 +81,25 @@
 		{
 			// FIXME: ugly
 			case NSCurveToBezierPathElement:
-				[handles addObject: AUTORELEASE([[ETBezierHandle alloc] initWithActionHandler: [ETBezierPointActionHandler sharedInstanceForObjectGraphContext: aContext]
-				                                                            manipulatedObject: aTarget
-																			         partcode: [path partcodeForControlPoint: 0 ofElement: i]
-																		   objectGraphContext: (COObjectGraphContext *)aContext])];
-				[handles addObject: AUTORELEASE([[ETBezierHandle alloc] initWithActionHandler: [ETBezierPointActionHandler sharedInstanceForObjectGraphContext: aContext]
-				                                                            manipulatedObject: aTarget
-																			         partcode: [path partcodeForControlPoint: 1 ofElement: i]
-																		   objectGraphContext: (COObjectGraphContext *)aContext])];
-				[handles addObject: AUTORELEASE([[ETBezierHandle alloc] initWithActionHandler: [ETBezierPointActionHandler sharedInstanceForObjectGraphContext: aContext]
-				                                                            manipulatedObject: aTarget
-																			         partcode: [path partcodeForControlPoint: 2 ofElement: i]
-																		   objectGraphContext: (COObjectGraphContext *)aContext])];
+                [handles addObject: AUTORELEASE([[ETBezierHandle alloc] initWithActionHandler: [ETBezierPointActionHandler sharedInstanceForObjectGraphContext: aContext]
+                                                                            manipulatedObject: aTarget
+                                                                                     partcode: [path partcodeForControlPoint: 0 ofElement: i]
+                                                                           objectGraphContext: (COObjectGraphContext *)aContext])];
+                [handles addObject: AUTORELEASE([[ETBezierHandle alloc] initWithActionHandler: [ETBezierPointActionHandler sharedInstanceForObjectGraphContext: aContext]
+                                                                            manipulatedObject: aTarget
+                                                                                     partcode: [path partcodeForControlPoint: 1 ofElement: i]
+                                                                           objectGraphContext: (COObjectGraphContext *)aContext])];
+                [handles addObject: AUTORELEASE([[ETBezierHandle alloc] initWithActionHandler: [ETBezierPointActionHandler sharedInstanceForObjectGraphContext: aContext]
+                                                                            manipulatedObject: aTarget
+                                                                                     partcode: [path partcodeForControlPoint: 2 ofElement: i]
+                                                                           objectGraphContext: (COObjectGraphContext *)aContext])];
 				break;	
 			case NSMoveToBezierPathElement:
 			case NSLineToBezierPathElement:
-				[handles addObject: AUTORELEASE([[ETBezierHandle alloc] initWithActionHandler: [ETBezierPointActionHandler sharedInstanceForObjectGraphContext: aContext]
-				                                                            manipulatedObject: aTarget
-																			         partcode: [path partcodeForElement: i]
-																		   objectGraphContext: (COObjectGraphContext *)aContext])];
+                [handles addObject: AUTORELEASE([[ETBezierHandle alloc] initWithActionHandler: [ETBezierPointActionHandler sharedInstanceForObjectGraphContext: aContext]
+                                                                            manipulatedObject: aTarget
+                                                                                     partcode: [path partcodeForElement: i]
+                                                                           objectGraphContext: (COObjectGraphContext *)aContext])];
 				break;
 			case NSClosePathBezierPathElement:
 				break;
