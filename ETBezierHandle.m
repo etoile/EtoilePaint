@@ -81,22 +81,22 @@
 		{
 			// FIXME: ugly
 			case NSCurveToBezierPathElement:
-				[handles addObject: AUTORELEASE([[ETBezierHandle alloc] initWithActionHandler: [ETBezierPointActionHandler sharedInstance]
+				[handles addObject: AUTORELEASE([[ETBezierHandle alloc] initWithActionHandler: [ETBezierPointActionHandler sharedInstanceForObjectGraphContext: aContext]
 				                                                            manipulatedObject: aTarget
 																			         partcode: [path partcodeForControlPoint: 0 ofElement: i]
 																		   objectGraphContext: (COObjectGraphContext *)aContext])];
-				[handles addObject: AUTORELEASE([[ETBezierHandle alloc] initWithActionHandler: [ETBezierPointActionHandler sharedInstance]
+				[handles addObject: AUTORELEASE([[ETBezierHandle alloc] initWithActionHandler: [ETBezierPointActionHandler sharedInstanceForObjectGraphContext: aContext]
 				                                                            manipulatedObject: aTarget
 																			         partcode: [path partcodeForControlPoint: 1 ofElement: i]
 																		   objectGraphContext: (COObjectGraphContext *)aContext])];
-				[handles addObject: AUTORELEASE([[ETBezierHandle alloc] initWithActionHandler: [ETBezierPointActionHandler sharedInstance]
+				[handles addObject: AUTORELEASE([[ETBezierHandle alloc] initWithActionHandler: [ETBezierPointActionHandler sharedInstanceForObjectGraphContext: aContext]
 				                                                            manipulatedObject: aTarget
 																			         partcode: [path partcodeForControlPoint: 2 ofElement: i]
 																		   objectGraphContext: (COObjectGraphContext *)aContext])];
 				break;	
 			case NSMoveToBezierPathElement:
 			case NSLineToBezierPathElement:
-				[handles addObject: AUTORELEASE([[ETBezierHandle alloc] initWithActionHandler: [ETBezierPointActionHandler sharedInstance]
+				[handles addObject: AUTORELEASE([[ETBezierHandle alloc] initWithActionHandler: [ETBezierPointActionHandler sharedInstanceForObjectGraphContext: aContext]
 				                                                            manipulatedObject: aTarget
 																			         partcode: [path partcodeForElement: i]
 																		   objectGraphContext: (COObjectGraphContext *)aContext])];
