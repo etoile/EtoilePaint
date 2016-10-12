@@ -16,10 +16,12 @@
 
 - (id) initWithActionHandler: (ETActionHandler *)anHandler
            manipulatedObject: (id)aTarget
+		  objectGraphContext: (COObjectGraphContext *)aContext
                     partcode: (ETBezierPathPartcode)partcode
 {
 	self = [super initWithActionHandler: anHandler
-	                  manipulatedObject: aTarget];
+	                  manipulatedObject: aTarget
+					 objectGraphContext: aContext];
 	if (nil == self)
 	{
 		return nil;
@@ -54,12 +56,14 @@
 @implementation ETBezierHandleGroup
 
 - (id) initWithManipulatedObject: (id)aTarget
+			  objectGraphContext: (COObjectGraphContext *)aContext
 {
-	return [self initWithActionHandler: nil manipulatedObject: aTarget];
+	return [self initWithActionHandler: nil manipulatedObject: aTarget objectGraphContext: aContext];
 }
 
-- (id) initWithActionHandler: (ETActionHandler *)anHandler 
+- (id) initWithActionHandler: (ETActionHandler *)anHandler
            manipulatedObject: (id)aTarget
+		  objectGraphContext: (COObjectGraphContext *)aContext
 {
 	NSMutableArray *handles = [NSMutableArray array];
 	
@@ -79,18 +83,22 @@
 			case NSCurveToBezierPathElement:
 				[handles addObject: AUTORELEASE([[ETBezierHandle alloc] initWithActionHandler: [ETBezierPointActionHandler sharedInstance]
 				                                                            manipulatedObject: aTarget
+																		   objectGraphContext: (COObjectGraphContext *)aContext
 																			         partcode: [path partcodeForControlPoint: 0 ofElement: i]])];
 				[handles addObject: AUTORELEASE([[ETBezierHandle alloc] initWithActionHandler: [ETBezierPointActionHandler sharedInstance]
 				                                                            manipulatedObject: aTarget
+																		   objectGraphContext: (COObjectGraphContext *)aContext
 																			         partcode: [path partcodeForControlPoint: 1 ofElement: i]])];
 				[handles addObject: AUTORELEASE([[ETBezierHandle alloc] initWithActionHandler: [ETBezierPointActionHandler sharedInstance]
 				                                                            manipulatedObject: aTarget
+																		   objectGraphContext: (COObjectGraphContext *)aContext
 																			         partcode: [path partcodeForControlPoint: 2 ofElement: i]])];
 				break;	
 			case NSMoveToBezierPathElement:
 			case NSLineToBezierPathElement:
 				[handles addObject: AUTORELEASE([[ETBezierHandle alloc] initWithActionHandler: [ETBezierPointActionHandler sharedInstance]
 				                                                            manipulatedObject: aTarget
+																		   objectGraphContext: (COObjectGraphContext *)aContext
 																			         partcode: [path partcodeForElement: i]])];
 				break;
 			case NSClosePathBezierPathElement:
@@ -100,7 +108,7 @@
 		}
 	}
 	
-	self = [super initWithView: nil coverStyle: nil actionHandler: anHandler];
+	self = [super initWithView: nil coverStyle: nil actionHandler: anHandler objectGraphContext: aContext];
 	if (self == nil)
 		return nil;
 	
