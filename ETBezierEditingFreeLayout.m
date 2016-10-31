@@ -24,7 +24,7 @@
 
 - (void) showHandlesForItem: (ETLayoutItem *)item
 {
-	ETHandleGroup *handleGroup = AUTORELEASE([[ETBezierHandleGroup alloc] initWithManipulatedObject: item]);
+	ETHandleGroup *handleGroup = AUTORELEASE([[ETBezierHandleGroup alloc] initWithManipulatedObject: item objectGraphContext: [self objectGraphContext]]);
 		
 	[[self layerItem] addItem: handleGroup];
 	// FIXME: Should [handleGroup display]; and display should retrieve the 
@@ -66,7 +66,7 @@
 	{
 		if ([item isSelected])
 		{
-			ETHandleGroup *handleGroup = AUTORELEASE([[ETBezierHandleGroup alloc] initWithManipulatedObject: item]);
+			ETHandleGroup *handleGroup = AUTORELEASE([[ETBezierHandleGroup alloc] initWithManipulatedObject: item objectGraphContext: [self objectGraphContext]]);
 			[[self layerItem] addItem: handleGroup];
 		}
 	}

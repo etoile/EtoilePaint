@@ -68,12 +68,10 @@
 @end
 
 @interface ETBezierPointStyle : ETBasicHandleStyle
-+ (id) sharedInstance;
 - (void) drawHandleInRect: (NSRect)rect;
 @end
 
 @interface ETBezierControlPointStyle : ETBasicHandleStyle
-+ (id) sharedInstance;
 - (void) drawHandleInRect: (NSRect)rect;
 @end
 

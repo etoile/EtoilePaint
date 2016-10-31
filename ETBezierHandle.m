@@ -30,11 +30,11 @@
 	
 	if ([[self manipulatedPath] isControlPoint: [self partcode]])
 	{
-		[self setStyle: [ETBezierControlPointStyle sharedInstance]];
+		[self setStyle: [ETBezierControlPointStyle sharedInstanceForObjectGraphContext: aContext]];
 	}
 	else
 	{
-		[self setStyle: [ETBezierPointStyle sharedInstance]];
+		[self setStyle: [ETBezierPointStyle sharedInstanceForObjectGraphContext: aContext]];
 	}
 	NSLog(@"Bezier handle %@ created, manip path %@", self, [self manipulatedPath]);
 	
@@ -278,16 +278,6 @@ or not. */
 
 @implementation ETBezierPointStyle
 
-static ETBezierPointStyle *sharedBezierPointStyle = nil;
-
-+ (id) sharedInstance
-{
-	if (sharedBezierPointStyle == nil)
-		sharedBezierPointStyle = [[ETBezierPointStyle alloc] init];
-		
-	return sharedBezierPointStyle;
-}
-
 /** Draws the interior of the handle. */
 - (void) drawHandleInRect: (NSRect)rect
 {
@@ -298,16 +288,6 @@ static ETBezierPointStyle *sharedBezierPointStyle = nil;
 @end
 
 @implementation ETBezierControlPointStyle
-
-static ETBezierControlPointStyle *sharedBezierControlPointStyle = nil;
-
-+ (id) sharedInstance
-{
-	if (sharedBezierControlPointStyle == nil)
-		sharedBezierControlPointStyle = [[ETBezierControlPointStyle alloc] init];
-		
-	return sharedBezierControlPointStyle;
-}
 
 /** Draws the interior of the handle. */
 - (void) drawHandleInRect: (NSRect)rect
