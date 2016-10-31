@@ -29,7 +29,7 @@
 - (id) initWithActionHandler: (ETActionHandler *)anHandler
            manipulatedObject: (id)aTarget
                     partcode: (ETBezierPathPartcode)partcode
-		  objectGraphContext: (COObjectGraphContext *)aContext;
+          objectGraphContext: (COObjectGraphContext *)aContext;
 
 - (NSBezierPath *) manipulatedPath;
 - (ETBezierPathPartcode) partcode;
@@ -42,10 +42,10 @@
 }
 
 - (id) initWithManipulatedObject: (id)aTarget
-			  objectGraphContext: (COObjectGraphContext *)aContext;
+              objectGraphContext: (COObjectGraphContext *)aContext;
 - (id) initWithActionHandler: (ETActionHandler *)anHandler
            manipulatedObject: (id)aTarget
-		  objectGraphContext: (COObjectGraphContext *)aContext;
+          objectGraphContext: (COObjectGraphContext *)aContext;
 - (void) updateHandleLocations;
 
 - (id) manipulatedObject;

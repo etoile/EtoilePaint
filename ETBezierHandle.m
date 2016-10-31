@@ -56,14 +56,14 @@
 @implementation ETBezierHandleGroup
 
 - (id) initWithManipulatedObject: (id)aTarget
-			  objectGraphContext: (COObjectGraphContext *)aContext
+              objectGraphContext: (COObjectGraphContext *)aContext
 {
 	return [self initWithActionHandler: nil manipulatedObject: aTarget objectGraphContext: aContext];
 }
 
 - (id) initWithActionHandler: (ETActionHandler *)anHandler
            manipulatedObject: (id)aTarget
-		  objectGraphContext: (COObjectGraphContext *)aContext
+          objectGraphContext: (COObjectGraphContext *)aContext
 {
 	NSMutableArray *handles = [NSMutableArray array];
 	
