@@ -57,6 +57,7 @@
 		6697AC9A104771D800456911 /* testbrush.png in Resources */ = {isa = PBXBuildFile; fileRef = 6697AC98104771CB00456911 /* testbrush.png */; };
 		8DC2EF530486A6940098B216 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C1666FE841158C02AAC07 /* InfoPlist.strings */; };
 		8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7B1FEA5585E11CA2CBB /* Cocoa.framework */; };
+		9DF803BF1DA501B1001406A4 /* CoreObject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF803B01DA501AA001406A4 /* CoreObject.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -193,6 +194,76 @@
 			remoteGlobalIDString = 8DC2EF4F0486A6940098B216;
 			remoteInfo = EtoilePaint;
 		};
+		9DF803961DA50175001406A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 662C413310B0D00600F060E4 /* EtoileFoundation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 602E12AE18B3A10E004F171B;
+			remoteInfo = "EtoileFoundation (iOS)";
+		};
+		9DF803981DA50175001406A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 662C413310B0D00600F060E4 /* EtoileFoundation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 609A557718C209FE0096927F;
+			remoteInfo = "TestEtoileFoundation (iOS)";
+		};
+		9DF803AF1DA501AA001406A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9DF803A41DA501AA001406A4 /* CoreObject.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6686BDAC12592BDA0065DE1A;
+			remoteInfo = CoreObject;
+		};
+		9DF803B11DA501AA001406A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9DF803A41DA501AA001406A4 /* CoreObject.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 791B4E2D1299C79300CCF472;
+			remoteInfo = TestCoreObject;
+		};
+		9DF803B31DA501AA001406A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9DF803A41DA501AA001406A4 /* CoreObject.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 66550BED17D51C8800327657;
+			remoteInfo = BenchmarkCoreObject;
+		};
+		9DF803B51DA501AA001406A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9DF803A41DA501AA001406A4 /* CoreObject.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 60C913B3165BBED000E0C5F4;
+			remoteInfo = BasicPersistence;
+		};
+		9DF803B71DA501AA001406A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9DF803A41DA501AA001406A4 /* CoreObject.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 60E08C6219792BEA00D1B7AD;
+			remoteInfo = "CoreObject (iOS)";
+		};
+		9DF803B91DA501AA001406A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9DF803A41DA501AA001406A4 /* CoreObject.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 60F91E9D197D1B8F009F47D7;
+			remoteInfo = "TestCoreObject (iOS)";
+		};
+		9DF803BB1DA501AA001406A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9DF803A41DA501AA001406A4 /* CoreObject.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6002E28E197FD90300AC9150;
+			remoteInfo = "BasicPersistence (iOS)";
+		};
+		9DF803BD1DA501AA001406A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9DF803A41DA501AA001406A4 /* CoreObject.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6061B8D71C57E89700813C18;
+			remoteInfo = "BenchmarkCoreObject (iOS)";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -250,6 +321,7 @@
 		6697AC98104771CB00456911 /* testbrush.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testbrush.png; sourceTree = "<group>"; };
 		8DC2EF5A0486A6940098B216 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8DC2EF5B0486A6940098B216 /* EtoilePaint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = EtoilePaint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9DF803A41DA501AA001406A4 /* CoreObject.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CoreObject.xcodeproj; path = ../CoreObject/CoreObject.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -267,6 +339,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DF803BF1DA501B1001406A4 /* CoreObject.framework in Frameworks */,
 				662C41C110B0D03900F060E4 /* EtoileUI.framework in Frameworks */,
 				662C41C010B0D03500F060E4 /* EtoileFoundation.framework in Frameworks */,
 				8DC2EF570486A6940098B216 /* Cocoa.framework in Frameworks */,
@@ -288,6 +361,7 @@
 		0867D691FE84028FC02AAC07 /* EtoilePaint */ = {
 			isa = PBXGroup;
 			children = (
+				9DF803A41DA501AA001406A4 /* CoreObject.xcodeproj */,
 				662C413310B0D00600F060E4 /* EtoileFoundation.xcodeproj */,
 				662C410E10B0CFF000F060E4 /* EtoileUI.xcodeproj */,
 				08FB77AEFE84172EC02AAC07 /* Classes */,
@@ -415,6 +489,8 @@
 				662C413C10B0D00600F060E4 /* EtoileFoundation.framework */,
 				662C413E10B0D00600F060E4 /* TestEtoileFoundation.bundle */,
 				609A4ED214FBBCAD0039A0D1 /* PlugInExample.plugin */,
+				9DF803971DA50175001406A4 /* libEtoileFoundation.a */,
+				9DF803991DA50175001406A4 /* TestEtoileFoundation.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -428,6 +504,21 @@
 				6697AB6410476B2700456911 /* SketchController.m */,
 			);
 			name = Sketch;
+			sourceTree = "<group>";
+		};
+		9DF803A51DA501AA001406A4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9DF803B01DA501AA001406A4 /* CoreObject.framework */,
+				9DF803B21DA501AA001406A4 /* Test */,
+				9DF803B41DA501AA001406A4 /* BenchmarkCoreObject */,
+				9DF803B61DA501AA001406A4 /* BasicPersistence */,
+				9DF803B81DA501AA001406A4 /* libCoreObject.a */,
+				9DF803BA1DA501AA001406A4 /* TestCoreObject.app */,
+				9DF803BC1DA501AA001406A4 /* BasicPersistence.app */,
+				9DF803BE1DA501AA001406A4 /* BenchmarkCoreObject (iOS).app */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -509,6 +600,8 @@
 /* Begin PBXProject section */
 		0867D690FE84028FC02AAC07 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+			};
 			buildConfigurationList = 1DEB91B108733DA50010E9CD /* Build configuration list for PBXProject "EtoilePaint" */;
 			compatibilityVersion = "Xcode 3.1";
 			developmentRegion = English;
@@ -523,6 +616,10 @@
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
 			projectDirPath = "";
 			projectReferences = (
+				{
+					ProductGroup = 9DF803A51DA501AA001406A4 /* Products */;
+					ProjectRef = 9DF803A41DA501AA001406A4 /* CoreObject.xcodeproj */;
+				},
 				{
 					ProductGroup = 662C413410B0D00600F060E4 /* Products */;
 					ProjectRef = 662C413310B0D00600F060E4 /* EtoileFoundation.xcodeproj */;
@@ -646,6 +743,76 @@
 			remoteRef = 662C413D10B0D00600F060E4 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		9DF803971DA50175001406A4 /* libEtoileFoundation.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libEtoileFoundation.a;
+			remoteRef = 9DF803961DA50175001406A4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9DF803991DA50175001406A4 /* TestEtoileFoundation.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = TestEtoileFoundation.app;
+			remoteRef = 9DF803981DA50175001406A4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9DF803B01DA501AA001406A4 /* CoreObject.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CoreObject.framework;
+			remoteRef = 9DF803AF1DA501AA001406A4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9DF803B21DA501AA001406A4 /* Test */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = Test;
+			remoteRef = 9DF803B11DA501AA001406A4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9DF803B41DA501AA001406A4 /* BenchmarkCoreObject */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = BenchmarkCoreObject;
+			remoteRef = 9DF803B31DA501AA001406A4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9DF803B61DA501AA001406A4 /* BasicPersistence */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = BasicPersistence;
+			remoteRef = 9DF803B51DA501AA001406A4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9DF803B81DA501AA001406A4 /* libCoreObject.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libCoreObject.a;
+			remoteRef = 9DF803B71DA501AA001406A4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9DF803BA1DA501AA001406A4 /* TestCoreObject.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = TestCoreObject.app;
+			remoteRef = 9DF803B91DA501AA001406A4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9DF803BC1DA501AA001406A4 /* BasicPersistence.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = BasicPersistence.app;
+			remoteRef = 9DF803BB1DA501AA001406A4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9DF803BE1DA501AA001406A4 /* BenchmarkCoreObject (iOS).app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "BenchmarkCoreObject (iOS).app";
+			remoteRef = 9DF803BD1DA501AA001406A4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -750,6 +917,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Frameworks";
 				PRODUCT_NAME = EtoilePaint;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Debug;
@@ -763,6 +931,7 @@
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Frameworks";
 				PRODUCT_NAME = EtoilePaint;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = framework;
 			};
 			name = Release;
@@ -782,7 +951,6 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				LD_RUNPATH_SEARCH_PATHS = "$(PROJECT_DIR)/../EtoileFoundation/build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME) $(PROJECT_DIR)/../EtoileUI/build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME) $(PROJECT_DIR)/../IconKit/build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME) $(PROJECT_DIR)/../ObjectMerging/build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx10.6;
 			};
 			name = Debug;
 		};
@@ -792,7 +960,6 @@
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				SDKROOT = macosx10.6;
 			};
 			name = Release;
 		};

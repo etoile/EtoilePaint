@@ -28,7 +28,8 @@
 
 - (id) initWithActionHandler: (ETActionHandler *)anHandler
            manipulatedObject: (id)aTarget
-                    partcode: (ETBezierPathPartcode)partcode;
+                    partcode: (ETBezierPathPartcode)partcode
+          objectGraphContext: (COObjectGraphContext *)aContext;
 
 - (NSBezierPath *) manipulatedPath;
 - (ETBezierPathPartcode) partcode;
@@ -40,9 +41,11 @@
 {
 }
 
-- (id) initWithManipulatedObject: (id)aTarget;
-- (id) initWithActionHandler: (ETActionHandler *)anHandler 
-           manipulatedObject: (id)aTarget;
+- (id) initWithManipulatedObject: (id)aTarget
+              objectGraphContext: (COObjectGraphContext *)aContext;
+- (id) initWithActionHandler: (ETActionHandler *)anHandler
+           manipulatedObject: (id)aTarget
+          objectGraphContext: (COObjectGraphContext *)aContext;
 - (void) updateHandleLocations;
 
 - (id) manipulatedObject;
@@ -65,12 +68,10 @@
 @end
 
 @interface ETBezierPointStyle : ETBasicHandleStyle
-+ (id) sharedInstance;
 - (void) drawHandleInRect: (NSRect)rect;
 @end
 
 @interface ETBezierControlPointStyle : ETBasicHandleStyle
-+ (id) sharedInstance;
 - (void) drawHandleInRect: (NSRect)rect;
 @end
 

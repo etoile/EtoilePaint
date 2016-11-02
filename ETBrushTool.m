@@ -46,7 +46,7 @@
 	_start = [anEvent location]; // store position in window
 	
 	_brushStroke = [[[ETLayoutItem alloc] init] autorelease];
-	_drawingStrokeShape = [[ETDrawingStrokeShape alloc] init];
+	_drawingStrokeShape = [[ETDrawingStrokeShape alloc] initWithObjectGraphContext: [self objectGraphContext]];
 	[_drawingStrokeShape addPoint: NSMakePoint(0.0, 0.0) withPressure: [(NSEvent *)[anEvent backendEvent] pressure]];
 	[_brushStroke setStyle: _drawingStrokeShape];
 	[_brushStroke setFrame: locInTargetContent];

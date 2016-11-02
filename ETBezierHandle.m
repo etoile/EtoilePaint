@@ -5,7 +5,7 @@
     Date: August 2009
     License:  Modified BSD (see COPYING)
  */
-
+#import <CoreObject/COObject.h>
 #import <EtoileFoundation/Macros.h>
 #import <EtoileUI/ETGeometry.h>
 #import <EtoileUI/ETShape.h>
@@ -17,9 +17,11 @@
 - (id) initWithActionHandler: (ETActionHandler *)anHandler
            manipulatedObject: (id)aTarget
                     partcode: (ETBezierPathPartcode)partcode
+          objectGraphContext: (COObjectGraphContext *)aContext
 {
 	self = [super initWithActionHandler: anHandler
-	                  manipulatedObject: aTarget];
+                      manipulatedObject: aTarget
+                     objectGraphContext: aContext];
 	if (nil == self)
 	{
 		return nil;
@@ -28,11 +30,11 @@
 	
 	if ([[self manipulatedPath] isControlPoint: [self partcode]])
 	{
-		[self setStyle: [ETBezierControlPointStyle sharedInstance]];
+		[self setStyle: [ETBezierControlPointStyle sharedInstanceForObjectGraphContext: aContext]];
 	}
 	else
 	{
-		[self setStyle: [ETBezierPointStyle sharedInstance]];
+		[self setStyle: [ETBezierPointStyle sharedInstanceForObjectGraphContext: aContext]];
 	}
 	NSLog(@"Bezier handle %@ created, manip path %@", self, [self manipulatedPath]);
 	
@@ -54,12 +56,14 @@
 @implementation ETBezierHandleGroup
 
 - (id) initWithManipulatedObject: (id)aTarget
+              objectGraphContext: (COObjectGraphContext *)aContext
 {
-	return [self initWithActionHandler: nil manipulatedObject: aTarget];
+	return [self initWithActionHandler: nil manipulatedObject: aTarget objectGraphContext: aContext];
 }
 
-- (id) initWithActionHandler: (ETActionHandler *)anHandler 
+- (id) initWithActionHandler: (ETActionHandler *)anHandler
            manipulatedObject: (id)aTarget
+          objectGraphContext: (COObjectGraphContext *)aContext
 {
 	NSMutableArray *handles = [NSMutableArray array];
 	
@@ -70,6 +74,7 @@
 	unsigned int count = [path elementCount];
 	NSPoint	points[3];
 	NSBezierPathElement type;
+    ETBezierPointActionHandler  *actionHandler = [ETBezierPointActionHandler sharedInstanceForObjectGraphContext: aContext];
 	for (unsigned int  i = 0; i < count; i++ )
 	{
 		type = [path elementAtIndex:i associatedPoints:points];
@@ -77,21 +82,18 @@
 		{
 			// FIXME: ugly
 			case NSCurveToBezierPathElement:
-				[handles addObject: AUTORELEASE([[ETBezierHandle alloc] initWithActionHandler: [ETBezierPointActionHandler sharedInstance]
-				                                                            manipulatedObject: aTarget
-																			         partcode: [path partcodeForControlPoint: 0 ofElement: i]])];
-				[handles addObject: AUTORELEASE([[ETBezierHandle alloc] initWithActionHandler: [ETBezierPointActionHandler sharedInstance]
-				                                                            manipulatedObject: aTarget
-																			         partcode: [path partcodeForControlPoint: 1 ofElement: i]])];
-				[handles addObject: AUTORELEASE([[ETBezierHandle alloc] initWithActionHandler: [ETBezierPointActionHandler sharedInstance]
-				                                                            manipulatedObject: aTarget
-																			         partcode: [path partcodeForControlPoint: 2 ofElement: i]])];
-				break;	
+                for(int j = 0; j <= 2; ++j)
+                    [handles addObject: AUTORELEASE([[ETBezierHandle alloc] initWithActionHandler: actionHandler
+                                                                                manipulatedObject: aTarget
+                                                                                         partcode: [path partcodeForControlPoint: j ofElement: i]
+                                                                               objectGraphContext: aContext])];
+				break;
 			case NSMoveToBezierPathElement:
 			case NSLineToBezierPathElement:
-				[handles addObject: AUTORELEASE([[ETBezierHandle alloc] initWithActionHandler: [ETBezierPointActionHandler sharedInstance]
-				                                                            manipulatedObject: aTarget
-																			         partcode: [path partcodeForElement: i]])];
+                [handles addObject: AUTORELEASE([[ETBezierHandle alloc] initWithActionHandler: actionHandler
+                                                                            manipulatedObject: aTarget
+                                                                                     partcode: [path partcodeForElement: i]
+                                                                           objectGraphContext: aContext])];
 				break;
 			case NSClosePathBezierPathElement:
 				break;
@@ -100,7 +102,7 @@
 		}
 	}
 	
-	self = [super initWithView: nil coverStyle: nil actionHandler: anHandler];
+	self = [super initWithView: nil coverStyle: nil actionHandler: anHandler objectGraphContext: aContext];
 	if (self == nil)
 		return nil;
 	
@@ -137,12 +139,12 @@
 
 - (id) manipulatedObject
 {
-	return GET_PROPERTY(kETManipulatedObjectProperty);
+	return [self valueForVariableStorageKey: kETManipulatedObjectProperty];
 }
 
 - (void) setManipulatedObject: (id)anObject
 {
-	SET_PROPERTY(anObject, kETManipulatedObjectProperty);
+	[self setValue: anObject forVariableStorageKey: kETManipulatedObjectProperty];
 	/* Better to avoid -setFrame: which would update the represented object frame. */
 	// FIXME: Ugly duplication with -setFrame:... 
 	//[self setFrame: [anObject frame]];
@@ -152,42 +154,42 @@
 
 - (NSPoint) anchorPoint
 {
-	return [(ETLayoutItem *)GET_PROPERTY(kETManipulatedObjectProperty) anchorPoint];
+	return [(ETLayoutItem *)[self valueForVariableStorageKey: kETManipulatedObjectProperty] anchorPoint];
 }
 
 - (void) setAnchorPoint: (NSPoint)anchor
 {
-	return [(ETLayoutItem *)GET_PROPERTY(kETManipulatedObjectProperty) setAnchorPoint: anchor];
+	return [(ETLayoutItem *)[self valueForVariableStorageKey: kETManipulatedObjectProperty] setAnchorPoint: anchor];
 }
 
 - (NSPoint) position
 {
-	return [(ETLayoutItem *)GET_PROPERTY(kETManipulatedObjectProperty) position];
+	return [(ETLayoutItem *)[self valueForVariableStorageKey: kETManipulatedObjectProperty] position];
 }
 
 - (void) setPosition: (NSPoint)aPosition
 {
-	[(ETLayoutItem *)GET_PROPERTY(kETManipulatedObjectProperty) setPosition: aPosition];
+	[(ETLayoutItem *)[self valueForVariableStorageKey: kETManipulatedObjectProperty] setPosition: aPosition];
 	[self updateHandleLocations];
 }
 
 /** Returns the content bounds associated with the receiver. */
 - (NSRect) contentBounds
 {
-	NSRect manipulatedFrame = [GET_PROPERTY(kETManipulatedObjectProperty) frame];
+	NSRect manipulatedFrame = [[self valueForVariableStorageKey: kETManipulatedObjectProperty] frame];
 	return ETMakeRect(NSZeroPoint, manipulatedFrame.size);
 }
 
 - (void) setContentBounds: (NSRect)rect
 {
-	NSRect manipulatedFrame = ETMakeRect([GET_PROPERTY(kETManipulatedObjectProperty) origin], rect.size);
-	[GET_PROPERTY(kETManipulatedObjectProperty) setFrame: manipulatedFrame];
+	NSRect manipulatedFrame = ETMakeRect([[self valueForVariableStorageKey: kETManipulatedObjectProperty] origin], rect.size);
+	[[self valueForVariableStorageKey: kETManipulatedObjectProperty] setFrame: manipulatedFrame];
 	[self updateHandleLocations];
 }
 
 - (NSRect) frame
 {
-	return [GET_PROPERTY(kETManipulatedObjectProperty) frame];
+	return [[self valueForVariableStorageKey: kETManipulatedObjectProperty] frame];
 }
 
 // NOTE: We need to figure out what we really needs. For example,
@@ -196,14 +198,14 @@
 // probably want to cache the bounding box value in an ivar too.
 - (void) setFrame: (NSRect)frame
 {
-	[GET_PROPERTY(kETManipulatedObjectProperty) setFrame: frame];
+	[[self valueForVariableStorageKey: kETManipulatedObjectProperty] setFrame: frame];
 	[self updateHandleLocations];
 }
 
 - (void) setBoundingBox: (NSRect)extent
 {
 	[super setBoundingBox: extent];
-	[GET_PROPERTY(kETManipulatedObjectProperty) setBoundingBox: extent];
+	[[self valueForVariableStorageKey: kETManipulatedObjectProperty] setBoundingBox: extent];
 }
 
 /** Marks both the receiver and its manipulated object as invalidated area 
@@ -270,16 +272,6 @@ or not. */
 
 @implementation ETBezierPointStyle
 
-static ETBezierPointStyle *sharedBezierPointStyle = nil;
-
-+ (id) sharedInstance
-{
-	if (sharedBezierPointStyle == nil)
-		sharedBezierPointStyle = [[ETBezierPointStyle alloc] init];
-		
-	return sharedBezierPointStyle;
-}
-
 /** Draws the interior of the handle. */
 - (void) drawHandleInRect: (NSRect)rect
 {
@@ -290,16 +282,6 @@ static ETBezierPointStyle *sharedBezierPointStyle = nil;
 @end
 
 @implementation ETBezierControlPointStyle
-
-static ETBezierControlPointStyle *sharedBezierControlPointStyle = nil;
-
-+ (id) sharedInstance
-{
-	if (sharedBezierControlPointStyle == nil)
-		sharedBezierControlPointStyle = [[ETBezierControlPointStyle alloc] init];
-		
-	return sharedBezierControlPointStyle;
-}
 
 /** Draws the interior of the handle. */
 - (void) drawHandleInRect: (NSRect)rect

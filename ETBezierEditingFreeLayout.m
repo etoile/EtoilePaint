@@ -10,7 +10,6 @@
 #import <EtoileUI/ETLayoutItem.h>
 #import <EtoileUI/EtoileUIProperties.h>
 #import <EtoileUI/ETSelectTool.h>
-#import <EtoileUI/NSView+Etoile.h>
 #import <EtoileUI/ETCompatibility.h>
 
 #import "ETBezierHandle.h"
@@ -24,7 +23,7 @@
 
 - (void) showHandlesForItem: (ETLayoutItem *)item
 {
-	ETHandleGroup *handleGroup = AUTORELEASE([[ETBezierHandleGroup alloc] initWithManipulatedObject: item]);
+	ETHandleGroup *handleGroup = AUTORELEASE([[ETBezierHandleGroup alloc] initWithManipulatedObject: item objectGraphContext: [self objectGraphContext]]);
 		
 	[[self layerItem] addItem: handleGroup];
 	// FIXME: Should [handleGroup display]; and display should retrieve the 
@@ -66,7 +65,7 @@
 	{
 		if ([item isSelected])
 		{
-			ETHandleGroup *handleGroup = AUTORELEASE([[ETBezierHandleGroup alloc] initWithManipulatedObject: item]);
+			ETHandleGroup *handleGroup = AUTORELEASE([[ETBezierHandleGroup alloc] initWithManipulatedObject: item objectGraphContext: [self objectGraphContext]]);
 			[[self layerItem] addItem: handleGroup];
 		}
 	}
